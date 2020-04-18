@@ -1,0 +1,1 @@
+Programa realizado en codeblocks debido a problemas al utilizar eclipse, la consola no mostraba la informacion correctamente

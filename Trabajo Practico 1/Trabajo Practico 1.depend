@@ -1,0 +1,34 @@
+# depslib dependency file v1.0
+1585976356 source:c:\users\lenovo\desktop\utn\programacion i-laboratorio i\trabajo practico\trabajo practico 1\falcioni.c
+	<stdio.h>
+	<stdlib.h>
+
+1586048130 source:c:\users\lenovo\desktop\utn\programacion i-laboratorio i\trabajo practico\trabajo practico 1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"falcioni.h"
+
+1585977908 c:\users\lenovo\desktop\utn\programacion i-laboratorio i\trabajo practico\trabajo practico 1\falcioni.h
+
+1586644924 source:c:\users\lenovo\desktop\utn\programacion i-laboratorio i\trabajo practico\tp_laboratorio1\trabajo practico 1\falcioni.c
+	<stdio.h>
+	<stdlib.h>
+
+1586644923 source:c:\users\lenovo\desktop\utn\programacion i-laboratorio i\trabajo practico\tp_laboratorio1\trabajo practico 1\main.c
+	<stdio.h>
+	<stdlib.h>
+	"falcioni.h"
+
+1586494944 c:\users\lenovo\desktop\utn\programacion i-laboratorio i\trabajo practico\tp_laboratorio1\trabajo practico 1\falcioni.h
+
+1587127699 source:c:\users\lenovo\desktop\utn\programacion i-laboratorio i\trabajo practico\tp_laboratorio1\trabajo practico 1 codeblocks\falcioni.c
+	<stdio.h>
+	<stdlib.h>
+
+1587127699 source:c:\users\lenovo\desktop\utn\programacion i-laboratorio i\trabajo practico\tp_laboratorio1\trabajo practico 1 codeblocks\main.c
+	<stdio.h>
+	<stdlib.h>
+	"falcioni.h"
+
+1587127699 c:\users\lenovo\desktop\utn\programacion i-laboratorio i\trabajo practico\tp_laboratorio1\trabajo practico 1 codeblocks\falcioni.h
+
