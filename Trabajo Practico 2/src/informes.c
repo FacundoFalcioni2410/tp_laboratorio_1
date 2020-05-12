@@ -35,7 +35,6 @@ void informar(eEmpleados x[],int tam, eSector sectores[], int tamSec)
 
 void informarEmpleadosOrdenadosAlfabeticamente(eEmpleados x[], int tam, eSector sectores[],int tamSec)
 {
-
     system("cls");
     printf("\n\n*** EMPLEADOS ORDENADOS ALFABETICAMENTE ***\n\n");
 
@@ -100,7 +99,7 @@ int menuInformes()
     int opcion;
 
     system("cls");
-    printf("\n\n***** Menu de Informes *****\n\n");
+    printf("***** Menu de Informes *****\n\n");
     printf("1. Empleados ordenados alfabeticamente por apellido y sector.\n");
     printf("2. Cantidad de sueldos totales, promedio de sueldos y que personas tienen un sueldo mas grande que el informe.\n");
     printf("3. Salir.\n\n");
