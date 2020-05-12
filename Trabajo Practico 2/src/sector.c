@@ -4,6 +4,7 @@
 #include <ctype.h>
 #include "arrayEmployees.h"
 #include "informes.h"
+#include "utn.h"
 
 
 int mostrarSectores(eSector sectores[], int tam)
@@ -17,9 +18,7 @@ int mostrarSectores(eSector sectores[], int tam)
 	{
 		printf("%d   %10s \n", sectores[i].id, sectores[i].descripcion);
 	}
-	printf("Elija una opcion: ");
-	fflush(stdin);
-	scanf("%d", &opcion);
+	utn_getEntero(&opcion,3,"Ingrese la opcion deseada: ", "Error. Opcion ingresada invalida\n",1,5);
 
 	return opcion;
 }

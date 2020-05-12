@@ -92,9 +92,7 @@ int menu()
     printf("3. Baja\n");
     printf("4. Informes\n");
     printf("5. Salir\n");
-    printf("Ingrese una opcion: ");
-    fflush(stdin);
-    scanf("%d",&opcion);
+	utn_getEntero(&opcion,3,"Ingrese la opcion deseada: ", "Error. Opcion ingresada invalida\n",1,5);
 
     return opcion;
 }

@@ -5,6 +5,7 @@
 #include "arrayEmployees.h"
 #include "informes.h"
 #include "sector.h"
+#include "utn.h"
 
 
 void bajaEmpleado(eEmpleados x[],int tam, eSector sectores[],int tamSec)
@@ -169,7 +170,7 @@ int altaEmpleado(int proximoId,eEmpleados x[], int tam, eSector sectores[], int 
     int indice;
     eEmpleados auxiliar;
 
-    alta = -1;
+    alta = 0;
     indice = buscarEspacioLibre(x,tam);
 
     if(indice == -1)
@@ -179,21 +180,16 @@ int altaEmpleado(int proximoId,eEmpleados x[], int tam, eSector sectores[], int 
     else
     {
         auxiliar.id=proximoId;
-        printf("Ingrese nombre: ");
-        fflush(stdin);
-        gets(auxiliar.nombre);
 
-        normalizarNombre(auxiliar.nombre);
+        utn_getCadena(auxiliar.nombre, 51,3,"Ingrese nombre del empleado: ","Error. Nombre invalido.\n");
 
-        printf("Ingrese apellido: ");
-       	fflush(stdin);
-       	gets(auxiliar.apellido);
+        normalizeStr(auxiliar.nombre);
 
-        normalizarNombre(auxiliar.apellido);
+        utn_getCadena(auxiliar.apellido, 51,3,"Ingrese apellido del empleado: ","Error. Apellido invalido.\n");
 
-        printf("Ingrese sueldo: ");
-        fflush(stdin);
-        scanf("%f",&auxiliar.sueldo);
+        normalizeStr(auxiliar.apellido);
+
+        utn_getFlotante(&auxiliar.sueldo, 3, "Ingrese sueldo del empleado: ","Error. Sueldo invalido", 10000, 1000000);
 
         switch(mostrarSectores(sectores, tamSec))
         {
@@ -252,19 +248,17 @@ void modificarEmpleado(eEmpleados x[],int tam, eSector sectores[],int tamSec)
 	    		switch(menuModificarEmpleado())
 	    		{
 				case 1:
-					printf("Ingrese el nombre:");
-					fflush(stdin);
-					gets(x[indice].nombre);
+			        utn_getCadena(x[indice].nombre, 51,3,"Ingrese nombre del empleado: ","Error. Nombre invalido.\n");
+
+			        normalizeStr(x[indice].nombre);
 					break;
 				case 2:
-					printf("Ingrese el apellido:");
-					fflush(stdin);
-					gets(x[indice].apellido);
+					utn_getCadena(x[indice].apellido, 51,3,"Ingrese apellido del empleado: ","Error. Apellido invalido.\n");
+
+					normalizeStr(x[indice].apellido);
 					break;
 				case 3:
-					printf("Ingrese el salario:");
-					fflush(stdin);
-					scanf("%f", &x[indice].sueldo);
+			        utn_getFlotante(&x[indice].sueldo, 3, "Ingrese sueldo del empleado: ","Error. Sueldo invalido", 10000, 1000000);
 					break;
 				case 4:
 					printf("Ingrese el sector:");
@@ -294,21 +288,8 @@ int menuModificarEmpleado()
 	printf("4. Sector\n");
 	printf("Ingrese una opcion: ");
 	fflush(stdin);
-	scanf("%d",&opcion);
+	utn_getEntero(&opcion,3,"Ingrese la opcion deseada: ", "Error. Opcion ingresada invalida\n",1,4);
 
 	return opcion;
 
-}
-
-void normalizarNombre(char nombre[])
-{
-	nombre[0] = toupper(nombre[0]);
-
-    for(int i = 0; nombre[i] != '\0'; i++)
-    {
-    	if(nombre[i] == ' ')
-        {
-    		nombre[i + 1] = toupper(nombre[i + 1]);
-        }
-    }
 }

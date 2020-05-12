@@ -4,6 +4,7 @@
 #include "arrayEmployees.h"
 #include "sector.h"
 #include "informes.h"
+#include "utn.h"
 
 void informar(eEmpleados x[],int tam, eSector sectores[], int tamSec)
 {
@@ -105,7 +106,7 @@ int menuInformes()
     printf("3. Salir.\n\n");
     printf("Ingrese una opcion: ");
     fflush(stdin);
-    scanf("%d",&opcion);
+	utn_getEntero(&opcion,3,"Ingrese la opcion deseada: ", "Error. Opcion ingresada invalida\n",1,3);
 
     return opcion;
 }

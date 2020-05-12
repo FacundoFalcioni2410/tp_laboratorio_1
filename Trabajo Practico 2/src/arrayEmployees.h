@@ -124,10 +124,3 @@ void modificarEmpleado(eEmpleados x[],int tam, eSector sectores[],int tamSec);
  * @return retorna un 1 si se realizo con exito o un 0 si hubo algun error
  */
 int cargarDescripcionSector(char descripcion[], int id, eSector sectores[], int tam);
-
-/**
- * @fn void normalizarNombre(char[])
- * @brief se pone en mayuscula la primer letra de cada palabra que contenga la cadena
- * @param nombre cadena a la cual se le van a realizar los cambios
- */
-void normalizarNombre(char nombre[]);
