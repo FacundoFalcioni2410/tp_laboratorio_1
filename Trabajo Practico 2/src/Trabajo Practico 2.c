@@ -5,6 +5,7 @@
 #include "arrayEmployees.h"
 #include "sector.h"
 #include "informes.h"
+#include "utn.h"
 
 #define TAM 1000
 #define TAMSEC 4
@@ -92,7 +93,11 @@ int menu()
     printf("3. Baja\n");
     printf("4. Informes\n");
     printf("5. Salir\n");
-	utn_getEntero(&opcion,3,"Ingrese la opcion deseada: ", "Error. Opcion ingresada invalida\n",1,5);
+    do
+    {
+
+    }while((utn_getEntero(&opcion,3,"Ingrese la opcion deseada: ", "Error. Opcion ingresada invalida\n",1,5)) != 0);
+
 
     return opcion;
 }
