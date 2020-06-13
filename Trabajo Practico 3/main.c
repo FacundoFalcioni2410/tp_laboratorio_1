@@ -18,6 +18,14 @@
      9. Guardar los datos de los empleados en el archivo data.bin (modo binario).
     10. Salir
 *****************************************************/
+
+/** \brief muestra el menu principal
+ *
+ * \param opcion int* pasa por referencia la opcion elegida por el usuario
+ * \return void
+ *
+ */
+
 void menu(int* option);
 
 int main()
