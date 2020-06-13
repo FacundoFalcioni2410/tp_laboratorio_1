@@ -32,6 +32,7 @@ int main()
 {
     int option = 0;
     char confirm = 'n';
+    int flag = 0;
     LinkedList* listaEmpleados = ll_newLinkedList();
 
     do
@@ -42,10 +43,26 @@ int main()
             switch(option)
             {
             case 1:
-                controller_loadFromText("data.csv",listaEmpleados);
+                if(flag == 0)
+                {
+                    controller_loadFromText("data.csv",listaEmpleados);
+                    flag = 1;
+                }
+                else
+                {
+                    printf("\nYa se cargaron los datos desde el archivo data.bin\n");
+                }
                 break;
             case 2:
-                controller_loadFromBinary("data.bin",listaEmpleados);
+                if(flag == 0)
+                {
+                    controller_loadFromBinary("data.bin",listaEmpleados);
+                    flag = 1;
+                }
+                else
+                {
+                    printf("\nYa se cargaron los datos desde el archivo data.csv\n");
+                }
                 break;
             case 3:
                 controller_addEmployee(listaEmpleados);
@@ -74,6 +91,7 @@ int main()
                 scanf("%c",&confirm);
                 break;
             }
+            printf("\n");
             system("pause");
             system("cls");
         }
