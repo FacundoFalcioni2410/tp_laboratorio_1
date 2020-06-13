@@ -104,6 +104,8 @@ int employee_setNombre(Employee* x, char* nombre)
     return todoOk;
 }
 
+
+
 int employee_getNombre(Employee* x, char* nombre)
 {
     int todoOk = 1;
@@ -193,7 +195,6 @@ int idIncremental(LinkedList* this)
 int employee_add(LinkedList* lista)
 {
     int todoOk = 1;
-    //int bufferId;
     int id;
     char bufferName[128];
     int bufferHours;
