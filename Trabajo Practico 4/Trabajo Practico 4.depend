@@ -1,0 +1,57 @@
+# depslib dependency file v1.0
+1592680887 source:c:\users\facu falcioni\desktop\utn\programacion i-laboratorio i\tp_laboratorio_1\trabajo practico 4\controller.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"parser.h"
+	"utn.h"
+	"Employee.h"
+
+1533133022 c:\users\facu falcioni\desktop\utn\programacion i-laboratorio i\tp_laboratorio_1\trabajo practico 4\linkedlist.h
+
+1592029893 c:\users\facu falcioni\desktop\utn\programacion i-laboratorio i\tp_laboratorio_1\trabajo practico 4\parser.h
+
+1589219982 c:\users\facu falcioni\desktop\utn\programacion i-laboratorio i\tp_laboratorio_1\trabajo practico 4\utn.h
+
+1592031477 c:\users\facu falcioni\desktop\utn\programacion i-laboratorio i\tp_laboratorio_1\trabajo practico 4\employee.h
+
+1592395298 source:c:\users\facu falcioni\desktop\utn\programacion i-laboratorio i\tp_laboratorio_1\trabajo practico 4\employee.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+	"Employee.h"
+	"utn.h"
+
+1592680714 source:c:\users\facu falcioni\desktop\utn\programacion i-laboratorio i\tp_laboratorio_1\trabajo practico 4\main.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+	"utn.h"
+
+1592668141 c:\users\facu falcioni\desktop\utn\programacion i-laboratorio i\tp_laboratorio_1\trabajo practico 4\controller.h
+	"Employee.h"
+
+1592684883 source:c:\users\facu falcioni\desktop\utn\programacion i-laboratorio i\tp_laboratorio_1\trabajo practico 4\linkedlist.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"LinkedList.h"
+
+1592029893 source:c:\users\facu falcioni\desktop\utn\programacion i-laboratorio i\tp_laboratorio_1\trabajo practico 4\parser.c
+	<stdio.h>
+	<stdlib.h>
+	"LinkedList.h"
+	"Controller.h"
+	"Employee.h"
+
+1589220076 source:c:\users\facu falcioni\desktop\utn\programacion i-laboratorio i\tp_laboratorio_1\trabajo practico 4\utn.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"utn.h"
+
