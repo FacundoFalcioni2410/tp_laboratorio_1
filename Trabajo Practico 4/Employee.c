@@ -172,27 +172,39 @@ int employee_getSueldo(Employee* x,int* sueldo)
 }
 
 
-int idIncremental(LinkedList* this)
+int getId(int* id)
 {
-    int len = ll_len(this);
-    Employee* auxEmployee;
-    int id;
-    int mayor;
-    int flag = 0;
+    FILE* pFile = fopen("nextID.bin","rb");
+    int todoOk = 1;
+    *id = 1001;
 
-    for(int i = 0; i < len; i++)
+    if(pFile != NULL)
     {
-        auxEmployee = (Employee*)ll_get(this,i);
-        employee_getId(auxEmployee,&id);
-        if(id > mayor || flag == 0)
-        {
-            mayor = id;
-            flag = 1;
-        }
+        fread(id,sizeof(int),1,pFile);
+        todoOk = 0;
+        fclose(pFile);
+    }
+    return todoOk;
+}
+
+int nextId(int id)
+{
+    FILE* pFile = fopen("nextID.bin", "wb");
+    int todoOk = 1;
+
+    id++;
+
+    if(pFile != NULL)
+    {
+        fwrite(&id,sizeof(int),1,pFile);
+        todoOk = 0;
+        fclose(pFile);
     }
 
-    return mayor;
+    return todoOk;
 }
+
+
 
 int employee_add(LinkedList* lista)
 {
@@ -203,7 +215,7 @@ int employee_add(LinkedList* lista)
     int bufferSalary;
     Employee* auxEmployee;
 
-    id = idIncremental(lista) + 1;
+    getId(&id);
 
     if(!(utn_getCadena(bufferName,128,3,"Ingrese nombre: ","ERROR. Nombre invalido.\n")))
     {
@@ -223,6 +235,7 @@ int employee_add(LinkedList* lista)
         if(auxEmployee!= NULL)
         {
             ll_add(lista,auxEmployee);
+            nextId(id);
             todoOk = 0;
         }
     }
@@ -256,4 +269,23 @@ int findEmployeeById(LinkedList* this, int id)
     }
 
     return indice;
+}
+
+
+
+int filtrarSueldo(void* unEmpleado)
+{
+    int returnAux = 0;
+    int sueldo;
+    Employee* x;
+    if(unEmpleado != NULL)
+    {
+        x = (Employee*) unEmpleado;
+        employee_getSueldo(x,&sueldo);
+        if(sueldo >= 35000)
+        {
+            returnAux = 1;
+        }
+    }
+    return returnAux;
 }

@@ -241,7 +241,7 @@ int compararNombre(void* a, void* b)
     return retorno;
 }
 
-/*int controller_sortEmployee(LinkedList* pArrayListEmployee)
+int controller_sortEmployee(LinkedList* pArrayListEmployee)
 {
     int todoOk = 1;
 
@@ -249,7 +249,7 @@ int compararNombre(void* a, void* b)
     ll_sort(pArrayListEmployee,compararNombre,1);
     todoOk = 0;
     return todoOk;
-}*/
+}
 
 int controller_saveAsText(char* path , LinkedList* pArrayListEmployee)
 {
@@ -336,10 +336,13 @@ int controller_compareLinkedList(LinkedList* this, LinkedList* this2)
 {
     int todoOk = 1;
 
-    if(this != NULL)
+    if(this != NULL && this2 != NULL)
     {
-        ll_containsAll(this,this2);
-        todoOk = 0;
+        if(ll_containsAll(this2,this))
+        {
+            todoOk = 0;
+        }
+
     }
     return todoOk;
 }

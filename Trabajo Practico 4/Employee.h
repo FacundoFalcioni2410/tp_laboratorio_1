@@ -126,6 +126,38 @@ int employee_setSueldo(Employee* x,int sueldo);
  */
 int employee_getSueldo(Employee* x,int* sueldo);
 
+/** \brief busca un empleado por su id
+ *
+ * \param lista donde se encuentra el empleado
+ * \param id del empleado que se quiere buscar
+ * \return devuelve 0 si pudo encontrarlo, 1 si no pudo
+ *
+ */
+
 int findEmployeeById(LinkedList* this, int id);
+
+/** \brief verifica si los empleados tienen mas de 35000 de sueldo
+ *
+ * \param elemento de una estructura
+ * \return devuelve 1 si cumple la condicion, 0 si no la cumple
+ *
+ */
+int filtrarSueldo(void* unEmpleado);
+
+/** \brief obtiene el id a utilizar por la funcion add que se encuentra guardado en un archivo binario
+ *
+ * \param puntero donde se va a guardar el id del archivo
+ * \return devuelve 0 si pudo obtenerlo, 1 si no pudo
+ *
+ */
+int getId(int* id);
+
+/** \brief guarda el proximo id a utilizarse en un archivo binario
+ *
+ * \param id a guardar
+ * \return retorna 0 si pudo guardarlo, 1 si no pudo
+ *
+ */
+int nextId(int id);
 
 #endif // employee_H_INCLUDED

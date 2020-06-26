@@ -104,6 +104,27 @@ void menuModificar(int* option);
  */
 int compararNombre(void* a, void* b);
 
+/** \brief vacia una lista
+ *
+ * \param lista a ser vaciada
+ * \return devuelve 0 si pudo vaciarla, 1 si no pudo
+ *
+ */
 int controller_emptyLinkedList(LinkedList* this);
 
+/** \brief crea un back up de la lista
+ *
+ * \param lista a realizarle el back up
+ * \return devuelve una nueva lista, la cual contiene los mismos elementos que la pasada por parametro
+ *
+ */
 LinkedList* controller_backUpList(LinkedList* this);
+
+/** \brief compara ambas listas para saber si son iguales o no
+ *
+ * \param lista 1
+ * \param lista 2
+ * \return devuelve 0 si son iguales, 1 si no lo son
+ *
+ */
+int controller_compareLinkedList(LinkedList* this, LinkedList* this2);

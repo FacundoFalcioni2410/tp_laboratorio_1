@@ -35,6 +35,7 @@ int main()
     int flag = 0;
     LinkedList* listaEmpleados = ll_newLinkedList();
     LinkedList* listaEmpleadosBackUp;
+    LinkedList* listaFiltrada;
 
     do
     {
@@ -77,9 +78,9 @@ int main()
             case 6:
                 controller_ListEmployees(listaEmpleados);
                 break;
-            /*case 7:
+            case 7:
                 controller_sortEmployee(listaEmpleados);
-                break;*/
+                break;
             case 8:
                 controller_saveAsText("data.csv",listaEmpleados);
                 break;
@@ -90,19 +91,27 @@ int main()
                 if(!(controller_emptyLinkedList(listaEmpleados)))
                 {
                     printf("Lista vaciada con exito");
+                    flag = 0;
                 }
                 break;
             case 11:
-                listaEmpleadosBackUp = controller_backUpList(listaEmpleados);
-                printf("\nBack up realizado con exito\n");
+                if(flag)
+                {
+                    listaEmpleadosBackUp = controller_backUpList(listaEmpleados);
+                    printf("\nBack up realizado con exito\n");
+                }
+                else
+                {
+                    printf("\nNo se puede realizar back up de una lista vacia.\n");
+                }
                 break;
             case 12:
                 controller_ListEmployees(listaEmpleadosBackUp);
                 break;
             case 13:
-                if(!(controller_compareLinkedList(listaEmpleados,listaEmpleadosBackUp)))
+                if(!(controller_compareLinkedList(listaEmpleados,listaEmpleadosBackUp)) && flag)
                 {
-                    printf("\nTodos los elementos de la lista de empleados estan contenidos en el back up, se recomienda realizar el mismo.\n");
+                    printf("\nTodos los elementos de la lista de empleados estan contenidos en el back up.\n");
                 }
                 else
                 {
@@ -110,7 +119,14 @@ int main()
                 }
                 break;
             case 14:
-                printf("Confirma salida del programa? ");
+                listaFiltrada = ll_filter(listaEmpleados,filtrarSueldo);
+                printf("Lista creada con exito");
+                break;
+            case 15:
+                controller_ListEmployees(listaFiltrada);
+                break;
+            case 16:
+                printf("Confirma salida del programa?: ");
                 fflush(stdin);
                 scanf("%c",&confirm);
                 break;
@@ -121,9 +137,11 @@ int main()
         }
         while(confirm != 's');
     }
-    while(option != 10);
+    while(option != 16);
 
     ll_deleteLinkedList(listaEmpleados);
+    ll_deleteLinkedList(listaEmpleadosBackUp);
+    ll_deleteLinkedList(listaFiltrada);
     return 0;
 }
 
@@ -143,6 +161,9 @@ void menu(int* option)
     printf("11. Backupear lista\n");
     printf("12. Ver lista backup\n");
     printf("13. Comparar lista con backup\n");
-    printf("14. Salir\n");
-    utn_getEntero(option,3,"Ingrese una opcion: ","ERROR. Opcion invalida\n",1,14);
+    printf("14. Filtrar lista de empleados con sueldo mayor a 35000\n");
+    printf("15. Mostrar lista filtrada\n");
+    printf("16. Salir.\n");
+    fflush(stdin);
+    utn_getEntero(option,3,"Ingrese una opcion: ","ERROR. Opcion invalida\n",1,16);
 }
