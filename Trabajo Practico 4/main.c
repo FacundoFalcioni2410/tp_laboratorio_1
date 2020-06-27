@@ -5,20 +5,6 @@
 #include "Employee.h"
 #include "utn.h"
 
-/****************************************************
-    Menu:
-     1. Cargar los datos de los empleados desde el archivo data.csv (modo texto).
-     2. Cargar los datos de los empleados desde el archivo data.bin (modo binario).
-     3. Alta de empleado
-     4. Modificar datos de empleado
-     5. Baja de empleado
-     6. Listar empleados
-     7. Ordenar empleados
-     8. Guardar los datos de los empleados en el archivo data.csv (modo texto).
-     9. Guardar los datos de los empleados en el archivo data.bin (modo binario).
-    10. Salir
-*****************************************************/
-
 /** \brief muestra el menu principal
  *
  * \param opcion int* pasa por referencia la opcion elegida por el usuario
@@ -32,7 +18,6 @@ int main()
 {
     int option = 0;
     char confirm = 'n';
-    int flag = 0;
     LinkedList* listaEmpleados = ll_newLinkedList();
     LinkedList* listaEmpleadosBackUp;
     LinkedList* listaFiltrada;
@@ -45,25 +30,23 @@ int main()
             switch(option)
             {
             case 1:
-                if(flag == 0)
+                if(ll_isEmpty(listaEmpleados))
                 {
                     controller_loadFromText("data.csv",listaEmpleados);
-                    flag = 1;
                 }
                 else
                 {
-                    printf("\nYa se cargaron los datos desde el archivo data.bin\n");
+                    printf("\nYa se cargaron los datos\n");
                 }
                 break;
             case 2:
-                if(flag == 0)
+                if(ll_isEmpty(listaEmpleados))
                 {
                     controller_loadFromBinary("data.bin",listaEmpleados);
-                    flag = 1;
                 }
                 else
                 {
-                    printf("\nYa se cargaron los datos desde el archivo data.csv\n");
+                    printf("\nYa se cargaron los datos\n");
                 }
                 break;
             case 3:
@@ -91,11 +74,10 @@ int main()
                 if(!(controller_emptyLinkedList(listaEmpleados)))
                 {
                     printf("Lista vaciada con exito");
-                    flag = 0;
                 }
                 break;
             case 11:
-                if(flag)
+                if(!(ll_isEmpty(listaEmpleados)))
                 {
                     listaEmpleadosBackUp = controller_backUpList(listaEmpleados);
                     printf("\nBack up realizado con exito\n");
@@ -109,7 +91,7 @@ int main()
                 controller_ListEmployees(listaEmpleadosBackUp);
                 break;
             case 13:
-                if(!(controller_compareLinkedList(listaEmpleados,listaEmpleadosBackUp)) && flag)
+                if(!(controller_compareLinkedList(listaEmpleados,listaEmpleadosBackUp)) && !ll_isEmpty(listaEmpleados))
                 {
                     printf("\nTodos los elementos de la lista de empleados estan contenidos en el back up.\n");
                 }
@@ -126,6 +108,23 @@ int main()
                 controller_ListEmployees(listaFiltrada);
                 break;
             case 16:
+                if(ll_isEmpty(listaEmpleados))
+                {
+                    printf("\nPrimero debe cargar la lista.\n");
+                }
+                else
+                {
+                    if(!(reubicarEmpleado(listaEmpleados)))
+                    {
+                        printf("\nEmpleado reubicado con exito.\n");
+                    }
+                    else
+                    {
+                        printf("\nError al reubicar el empleado.\n");
+                    }
+                }
+                break;
+            case 17:
                 printf("Confirma salida del programa?: ");
                 fflush(stdin);
                 scanf("%c",&confirm);
@@ -137,7 +136,7 @@ int main()
         }
         while(confirm != 's');
     }
-    while(option != 16);
+    while(option != 17);
 
     ll_deleteLinkedList(listaEmpleados);
     ll_deleteLinkedList(listaEmpleadosBackUp);
@@ -163,7 +162,8 @@ void menu(int* option)
     printf("13. Comparar lista con backup\n");
     printf("14. Filtrar lista de empleados con sueldo mayor a 35000\n");
     printf("15. Mostrar lista filtrada\n");
-    printf("16. Salir.\n");
+    printf("16. Reubicar empleado.\n");
+    printf("17. Salir.\n");
     fflush(stdin);
-    utn_getEntero(option,3,"Ingrese una opcion: ","ERROR. Opcion invalida\n",1,16);
+    utn_getEntero(option,3,"Ingrese una opcion: ","ERROR. Opcion invalida\n",1,17);
 }

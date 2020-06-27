@@ -160,4 +160,13 @@ int getId(int* id);
  */
 int nextId(int id);
 
+/** \brief reubica un empleado de la lista en otra posicion deseada por el usuario
+ *
+ * \param lista de empleados
+ * \return devuelve 0 si reubico al empleado con exito, 1 si no lo pudo realizar
+ *
+ */
+
+int reubicarEmpleado(LinkedList* this);
+
 #endif // employee_H_INCLUDED

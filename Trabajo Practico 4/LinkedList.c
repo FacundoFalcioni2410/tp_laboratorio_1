@@ -264,20 +264,14 @@ int ll_remove(LinkedList* this,int index)
 int ll_clear(LinkedList* this)
 {
     int returnAux = -1;
-    int len = ll_len(this);
 
     if (this != NULL)
     {
-        for(int i = len; i>0; i--)
+        while(ll_len(this) != 0)
         {
-            ll_remove(this,len - 1);
+            ll_remove(this, 0);
             returnAux = 0;
         }
-        /*        for(int i = len; i>=0; i--)
-        {
-            ll_remove(this, len - 1);
-            returnAux = 0;
-        }*/
     }
 
     return returnAux;

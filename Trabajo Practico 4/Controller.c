@@ -102,7 +102,6 @@ int controller_ListEmployees(LinkedList* pArrayListEmployee)
     return todoOk;
 }
 
-
 int controller_addEmployee(LinkedList* pArrayListEmployee)
 {
     int todoOk;
@@ -140,8 +139,6 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
     system("cls");
     utn_getEntero(&id,3,"Ingrese el ID del empleado que desea modificar: ","ERROR. ID invalido\n",1,1500);
     index = findEmployeeById(pArrayListEmployee,id);
-    auxEmployee = (Employee*) ll_get(pArrayListEmployee, index);
-
     if(index == -1)
     {
         printf("\nNo hay empleados ingresados con ese ID\n");
@@ -151,7 +148,7 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
         printf("%4d   %10s      %4d           %6d\n",id,nombre,horas,sueldo);
         auxEmployee = (Employee*) ll_get(pArrayListEmployee,index);
         controller_ListEmployee(auxEmployee);
-        printf("\nDesea eliminar a este empleado?: ");
+        printf("\nDesea modificar a este empleado?: ");
         fflush(stdin);
         scanf("%c",&confirm);
         if(confirm != 'n')
@@ -182,8 +179,8 @@ int controller_editEmployee(LinkedList* pArrayListEmployee)
                 }while(sueldo < 0);
                 employee_setSueldo(auxEmployee,sueldo);
                 break;
-
                 todoOk = 0;
+                ll_set(pArrayListEmployee,index,auxEmployee);
             }
         }
     }

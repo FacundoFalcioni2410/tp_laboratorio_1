@@ -257,7 +257,7 @@ int findEmployeeById(LinkedList* this, int id)
         employee_getId(empleado,&idAux);
         if(idAux == id)
         {
-            indice = i;
+            indice = ll_indexOf(this,empleado);
             flag = 0;
             break;
         }
@@ -288,4 +288,31 @@ int filtrarSueldo(void* unEmpleado)
         }
     }
     return returnAux;
+}
+
+int reubicarEmpleado(LinkedList* this)
+{
+    int todoOk = 1;
+    int indiceEmpleado;
+    int indiceAUbicar;
+    Employee* auxEmployee;
+
+    system("cls");
+
+    if(this != NULL)
+    {
+        if(!(utn_getEntero(&indiceEmpleado,3,"Ingrese el indice del empleado que desea mover de posicion: ","ERROR. Indice invalido.\n",0,ll_len(this))))
+        {
+            auxEmployee = (Employee*) ll_pop(this,indiceEmpleado);
+            if(auxEmployee != NULL)
+            {
+                if(!(utn_getEntero(&indiceAUbicar,3,"Ingrese el indice donde desea ubicar al empleado: ","ERROR. Indice invalido.\n",0,ll_len(this))))
+                {
+                    todoOk = ll_push(this,indiceAUbicar,auxEmployee);
+                }
+            }
+        }
+    }
+
+    return todoOk;
 }
